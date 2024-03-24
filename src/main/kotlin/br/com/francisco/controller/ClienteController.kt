@@ -1,34 +1,34 @@
 package br.com.francisco.controller
 
-import br.com.francisco.model.Veiculo
-import br.com.francisco.service.VeiculoService
+import br.com.francisco.model.Cliente
+import br.com.francisco.service.ClienteService
 import io.micronaut.http.HttpResponse
 import io.micronaut.http.annotation.*
 
 
 @Controller("/cliente")
 class ClienteController(
-    private val veiculoService: VeiculoService
+    private val clienteService: ClienteService
 ) {
 
     @Post
-    fun create (@Body veiculo: Veiculo): HttpResponse<Veiculo>{
-        return HttpResponse.created(veiculoService.create(veiculo))
+    fun create (@Body cliente: Cliente): HttpResponse<Cliente>{
+        return HttpResponse.created(clienteService.create(cliente))
     }
 
     @Get("/{id}")
-    fun findById(@PathVariable id : Long) : HttpResponse<Veiculo> {
-       return HttpResponse.ok(veiculoService.findById(id))
+    fun findById(@PathVariable id : Long) : HttpResponse<Cliente> {
+       return HttpResponse.ok(clienteService.findById(id))
     }
 
     @Get()
-    fun findAll() : HttpResponse<List<Veiculo>> {
-        return HttpResponse.ok(veiculoService.findAll())
+    fun findAll() : HttpResponse<List<Cliente>> {
+        return HttpResponse.ok(clienteService.findAll())
     }
 
     @Delete("/{id}")
-    fun delete(@PathVariable id : Long) : HttpResponse<Veiculo> {
-        veiculoService.delete(id)
+    fun delete(@PathVariable id : Long) : HttpResponse<Cliente> {
+        clienteService.delete(id)
         return HttpResponse.noContent()
     }
 }

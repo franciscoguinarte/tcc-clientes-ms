@@ -1,16 +1,17 @@
 package br.com.francisco.model
 
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
+import lombok.Data
+import javax.persistence.*
 
 @Entity
+@Data
 data class Veiculo (
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     val id : Long,
     val modelo : String,
     val marca : String,
-    val placa : String
+    val placa : String,
+    @ManyToOne(fetch = FetchType.LAZY)
+    val cliente: Cliente
 )
