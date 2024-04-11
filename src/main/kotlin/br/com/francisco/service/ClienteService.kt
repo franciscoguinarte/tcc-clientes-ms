@@ -1,9 +1,7 @@
 package br.com.francisco.service
 
 import br.com.francisco.model.Cliente
-import br.com.francisco.model.Veiculo
 import br.com.francisco.persistence.ClienteRepository
-import br.com.francisco.persistence.VeiculoRepository
 import io.micronaut.http.HttpStatus
 import io.micronaut.http.exceptions.HttpStatusException
 import jakarta.inject.Singleton
@@ -13,9 +11,9 @@ class ClienteService(
     private val clienteRepository: ClienteRepository
 ) {
 
-    fun create(cliente: Cliente): Cliente {
+    fun create(veiculo: Cliente): Cliente {
         try {
-            return clienteRepository.save(cliente);
+            return clienteRepository.save(veiculo);
         } catch (e : Exception){
             throw e;
         }
@@ -31,8 +29,8 @@ class ClienteService(
 
     fun delete(id: Long) {
         try {
-            val cliente: Cliente = clienteRepository.findById(id).get();
-            clienteRepository.delete(cliente);
+            val veiculo: Cliente = clienteRepository.findById(id).get();
+            clienteRepository.delete(veiculo);
         }
         catch (e : Exception) {
             if(e.message?.contains("No value present") == true){

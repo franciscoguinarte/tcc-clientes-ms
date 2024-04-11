@@ -4,6 +4,7 @@ import br.com.francisco.model.Cliente
 import br.com.francisco.service.ClienteService
 import io.micronaut.http.HttpResponse
 import io.micronaut.http.annotation.*
+import java.math.BigDecimal
 
 
 @Controller("/cliente")
@@ -19,6 +20,7 @@ class ClienteController(
     @Get("/{id}")
     fun findById(@PathVariable id : Long) : HttpResponse<Cliente> {
        return HttpResponse.ok(clienteService.findById(id))
+
     }
 
     @Get()
